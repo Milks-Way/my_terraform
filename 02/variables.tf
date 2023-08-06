@@ -38,3 +38,29 @@ variable "vm_metadata" {
     ssh-key = "ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCdR5yKVwC99rJFyRgpEZvLNK6mRCKOPCT+lQ/RZNqiAZgRdcImykrgYzZyO+si87FtGPf8xOXoHPi61jM/oRYYYUHAU0GmP40JqHPJWvr8/Tr6GZF1wEzTYCVs0WF+YfojasTlMuhGCbh3XtgDQZWMwUo+3aImMfahj008RlByB5AuohtG/+7qb5F1JNueKlaggzJSjUSGQUa3dXj8niK6cl4NZ3OSU1/0JJ2+URa1CXGKk+7rncdcIfb39sSrtgnl+usT6WR3APznm6DOgjLkrKAiO2B2J9VA1mqt/01CVFtdsdbEAi+km1KC6S08etghwh3WtNjC++QmD6QWT8DtirG6mWRYY0f25f7KNUpJaPV7WlPn7JMl0sqbB1Pt/kLcGq5aDrGRM2bRJffvKZbpPf+USA3WZgeJaoTM7UtA1qfyza1cTBRoUDcfmbBQmw2hATuPvv24fZz+R8TvLrNued8a7dp/khlBXfGu2NdPRm0dNL1T4/HoWKPZ7FWFhG8= noname@noname"
   }
 }
+
+variable "vm_web_ya__platform_id" {
+  type        = string
+  default     = "standard-v1"
+  description = "yandex platform_id standard"
+}
+
+variable "each_resource" {
+  type = map(object({
+    cores = number
+    memory = number
+    core_fraction = number
+  }))
+  default = {
+    "main" = {
+      cores = 2
+      memory = 4
+      core_fraction = 5
+    }
+    "replica" = {
+      cores = 2
+      memory = 2
+      core_fraction = 20
+    }
+  }
+}
